@@ -1,14 +1,21 @@
 const path = require('path');
 const express = require('express');
+const hbs = require('hbs');
 
 const app = express();
 
 
-console.log(path.join(__dirname, '../public'));
+// view paths
 const directoryPath = path.join(__dirname, '../public');
+const viewsPath = path.join(__dirname, '../templates/views');
+const partialPath = path.join(__dirname, '../templates/partials');
 
-
+// view set up
 app.set('view engine', 'hbs');
+app.set('views', viewsPath);
+hbs.registerPartials(partialPath);
+
+// setup static path for delivery
 app.use(express.static(directoryPath));
 
 app.get('/', (req, res) => {
@@ -29,7 +36,6 @@ app.get("/help", (req, res) => {
     res.render('help',{
         title: 'Help',
         message: 'This is a help message',
-        
         } )
 })
 
