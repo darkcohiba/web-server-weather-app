@@ -18,6 +18,8 @@ hbs.registerPartials(partialPath);
 // setup static path for delivery
 app.use(express.static(directoryPath));
 
+
+
 app.get('/', (req, res) => {
     res.render('index',{
         title: 'Weather',
@@ -43,6 +45,22 @@ app.get("/help", (req, res) => {
 app.get("/weather", (req, res) => {
     res.send({"Weather Page": "Sunny","Temperature": "25"});
 });
+
+app.get("/help/*", (req, res) => {
+    res.render("404", {
+        error: "Help article not found",
+        name: 'Sam Waters'
+    });
+});
+
+
+app.get("*", (req, res) => {
+    res.render("404", {
+        error: "Page not found",
+        name: 'Sam Waters'
+    });
+});
+
 
 
 app.listen(3000, () => {

@@ -1,8 +1,9 @@
-h1  {
-    color:blue;
-}
-
-img{
-    width: 500px;
-    height: 300px;
+body  {
+    border-color: #333;
+    border-style: solid;
+    color:#333;
+    font-family: arial;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
