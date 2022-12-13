@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="icon" href="https://www.flaticon.com/free-icons/cloud">
+    {{!-- <link rel="icon" href="https://www.flaticon.com/free-icons/cloud"> --}}
     <link rel="stylesheet" href="./css/styles.css">
     <script src="./js/app.js"></script>
     <title>{{title}}</title>
@@ -10,6 +10,24 @@
     <div class="main-content">
       {{>header}}
       <p>Use this site to get your weather!</p>
+      {{!-- create a form for looking for weather --}}
+      <form action="/weather" method="POST">
+        <input type="text" name="address" placeholder="Enter an address">
+        <button>Get Weather</button>
+      </form>
+      {{!-- create a card for display weather information --}}
+      {{#if weather}}
+        <div class="card">
+          <h2>Weather</h2>
+          <p>Location: {{weather.location}}</p>
+          <p>Forecast: {{weather.forecast}}</p>
+          <p>Temperature: {{weather.temperature}}</p>
+          <p>Feels Like: {{weather.feelsLike}}</p>
+          <p>Humidity: {{weather.humidity}}</p>
+          <p>Wind Speed: {{weather.windSpeed}}</p>
+          <p>Wind Direction: {{weather.windDirection}}</p>
+        </div>
+      {{/if}}
     </div>
     {{>footer}}
 
