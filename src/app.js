@@ -46,6 +46,12 @@ app.get("/weather", (req, res) => {
     res.send({"Weather Page": "Sunny","Temperature": "25"});
 });
 
+app.get('/products', (req, res) => {
+    res.send({
+        Products:[]
+    });
+})
+
 app.get("/help/*", (req, res) => {
     res.render("404", {
         error: "Help article not found",
